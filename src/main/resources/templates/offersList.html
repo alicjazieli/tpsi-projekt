@@ -9,9 +9,10 @@
     </head>
     <body>
         <section layout:fragment="content" >
-            <p th:each="cm : ${carManufacturers}" th:text="${cm.name}"></p>
-<!--             <span class="text-primary" th:text="${carModel2}"></span> 
-             <span class="text-primary" th:text="${getManufacturer2}"></span> -->
+            <span class="text-primary" th:text="${carModel2}"></span> <br>
+             <span class="text-primary" th:text="${getManufacturer2}"></span> 
+             <br>
+             <p th:each="cm : ${carManufacturers}" th:text="${cm.name}"></p>
         </section>
     </body>
 </html>

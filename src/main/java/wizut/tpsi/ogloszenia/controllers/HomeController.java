@@ -24,8 +24,8 @@ public class HomeController {
         List<CarManufacturer> carManufacturers = os.getCarManufacturers();
         model.addAttribute("carManufacturers", carManufacturers);
     
-//        model.addAttribute("carModel2", os.getModel(2));
-//        model.addAttribute("getManufacturer2", os.getManufacturer(2));
+        model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
+        model.addAttribute("getManufacturer2", os.getModel(2).getName());
         return "offersList";
     }
 }
