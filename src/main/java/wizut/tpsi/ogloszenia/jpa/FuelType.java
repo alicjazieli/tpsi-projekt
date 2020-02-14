@@ -5,10 +5,42 @@
  */
 package wizut.tpsi.ogloszenia.jpa;
 
-/**
- *
- * @author ALA
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "fuel_type")
 public class FuelType {
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Integer id;
+    
+    @Size(max = 30)
+    @Column(name = "name")
+    private String name;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     
 }
