@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -24,6 +26,18 @@ public class CarModel {
     @Column(name = "name")
     private String name;
 
+    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id")
+    @ManyToOne
+    private CarManufacturer manufacturer;
+
+    public CarManufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(CarManufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+    
     public void setId(Integer id) {
         this.id = id;
     }

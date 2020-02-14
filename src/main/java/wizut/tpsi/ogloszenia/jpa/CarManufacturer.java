@@ -25,18 +25,6 @@ public class CarManufacturer {
     @Size(max = 30)
     @Column(name = "name")
     private String name;
-
-    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id")
-    @ManyToOne
-    private CarManufacturer manufacturer;
-
-    public CarManufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(CarManufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
     
     public void setId(Integer id) {
         this.id = id;

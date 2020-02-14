@@ -5,10 +5,12 @@
  */
 package wizut.tpsi.ogloszenia.controllers;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import wizut.tpsi.ogloszenia.jpa.CarManufacturer;
 import wizut.tpsi.ogloszenia.services.OffersService;
 
 @Controller
@@ -19,7 +21,11 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         
-        model.addAttribute("carModel2", os.getModel(3));
+        List<CarManufacturer> carManufacturers = os.getCarManufacturers();
+        model.addAttribute("carManufacturers", carManufacturers);
+    
+//        model.addAttribute("carModel2", os.getModel(2));
+//        model.addAttribute("getManufacturer2", os.getManufacturer(2));
         return "offersList";
     }
 }
