@@ -9,6 +9,27 @@
     </head>
     <body>
         <section layout:fragment="content" >
+                <table class="table text-right">
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Rocznik</th>
+                        <th>Cena</th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="offer : ${offers}">
+                        <td th:text="${offer.title}"></td>
+                        <td th:text="${offer.model.manufacturer.name}"></td>
+                        <td th:text="${offer.model.name}"></td>
+                        <td th:text="${offer.year}"></td>
+                        <td class="text-right"><span th:text="${#numbers.formatDecimal(offer.price, 0, 'WHITESPACE', 0,'COMMA')}"></span>
+                        zł </td>
+                        <td><a th:href="|/offer/${offer.id}|">Pokaż</a></td>
+                    </tr>
+                </table>
+            
+           
             <!--Lab10 zad 3-->
             <!--<span class="text-primary" th:text="${carModel2}"></span> <br>-->
 <!--            <span class="text-primary" th:text="${getManufacturer2}"></span> 
@@ -20,7 +41,7 @@
             <p th:each="ca : ${carModel}" th:text="${ca.name}"></p> <br>-->
              <!--Lab11 zad2-->
             <!--<p th:each="ofe : ${carOffer}" th:text="${ofe.title}"></p> <br>-->
-            <p th:each="ofr : ${offerTitle}" th:text="${ofr.title}"></p> <br>
+            <!--<p th:each="ofr : ${offerTitle}" th:text="${ofr.title}"></p> <br>-->
             <!--<span class="text-primary" th:text="${carsOffer}"></span> <br>-->
             <!--<p th:each="ofm : ${carOfferMan}" th:text="${ofm.title}"></p> <br>-->
         </section>
