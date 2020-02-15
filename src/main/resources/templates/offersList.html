@@ -27,29 +27,26 @@
                         <td th:text="${offer.model.manufacturer.name}"></td>
                         <td th:text="${offer.model.name}"></td>
                         <td th:text="${offer.year}"></td>
-                        
                         <td th:text="${offer.mileage}"></td>
                         <td th:text="${offer.engineSize}"></td>
                         <td th:text="${offer.enginePower}"></td>
                         <td th:text="${offer.fuelType.name}"></td>
-                        
                         <td class="text-right"><span th:text="${#numbers.formatDecimal(offer.price, 0, 'WHITESPACE', 0,'COMMA')}"></span>
                         zł </td>
                         <td><a th:href="|/offer/${offer.id}|">Pokaż</a></td>
                     </tr>
                 </table>
-            
            
             <!--Lab10 zad 3-->
             <!--<span class="text-primary" th:text="${carModel2}"></span> <br>-->
-<!--            <span class="text-primary" th:text="${getManufacturer2}"></span> 
+            <!--<span class="text-primary" th:text="${getManufacturer2}"></span> 
             <br>-->
             <!--<p th:each="cm : ${carManufacturers}" th:text="${cm.name}"></p>-->
             <!--Lab11 zad 1-->
-<!--            <p th:each="bs : ${bodyStyle}" th:text="${bs.name}"></p> <br>
+            <!--<p th:each="bs : ${bodyStyle}" th:text="${bs.name}"></p> <br>
             <p th:each="ft : ${fuelType}" th:text="${ft.name}"></p> <br>
             <p th:each="ca : ${carModel}" th:text="${ca.name}"></p> <br>-->
-             <!--Lab11 zad2-->
+            <!--Lab11 zad2-->
             <!--<p th:each="ofe : ${carOffer}" th:text="${ofe.title}"></p> <br>-->
             <!--<p th:each="ofr : ${offerTitle}" th:text="${ofr.title}"></p> <br>-->
             <!--<span class="text-primary" th:text="${carsOffer}"></span> <br>-->

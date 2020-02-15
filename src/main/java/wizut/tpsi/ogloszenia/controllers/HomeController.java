@@ -36,7 +36,6 @@ public class HomeController {
         model.addAttribute("offers", offers);
 
         return "offersList";
-       
     
 //        List<BodyStyle> bodyStyle = os.getBodyStyles();
 //        model.addAttribute("bodyStyle", bodyStyle);
