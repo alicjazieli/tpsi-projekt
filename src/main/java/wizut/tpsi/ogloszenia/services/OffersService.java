@@ -14,6 +14,7 @@ import wizut.tpsi.ogloszenia.jpa.BodyStyle;
 import wizut.tpsi.ogloszenia.jpa.CarManufacturer;
 import wizut.tpsi.ogloszenia.jpa.CarModel;
 import wizut.tpsi.ogloszenia.jpa.FuelType;
+import wizut.tpsi.ogloszenia.jpa.Offer;
 
 @Service
 public class OffersService {
@@ -61,6 +62,31 @@ public class OffersService {
         TypedQuery<CarModel> query = em.createQuery(jpql, CarModel.class);
         query.setParameter("id", manufacturerId);
         return query.getResultList();
+    }
+    
+        public List<Offer> getOffers() {
+        String jpql = "select ofr from Offer ofr order by ofr.title";
+        TypedQuery<Offer> query = em.createQuery(jpql, Offer.class);
+        List<Offer> result = query.getResultList();
+        return result;
+    }
+        
+    public List<Offer> getOffersByModel(int modelId) {
+        String jpql = "select ofe from Offer ofe where ofe.model.id = :id order by ofe.title";
+        TypedQuery<Offer> query = em.createQuery(jpql, Offer.class);
+        query.setParameter("id", modelId);
+        return query.getResultList();
+    }
+    
+//    public List<Offer> getOffersByManufacturer(int manufacturerId) {
+//        String jpql = "select ofm from Offer ofm where ofm.model.id = :id order by ofm.title";
+//        TypedQuery<Offer> query = em.createQuery(jpql, Offer.class);
+//        query.setParameter("id", modelId);
+//        return query.getResultList();
+//    }
+    
+    public Offer getOffer(int id) {
+        return em.find(Offer.class, id);
     }
     
 }

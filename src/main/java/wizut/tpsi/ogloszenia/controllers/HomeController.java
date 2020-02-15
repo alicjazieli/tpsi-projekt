@@ -14,6 +14,7 @@ import wizut.tpsi.ogloszenia.jpa.BodyStyle;
 import wizut.tpsi.ogloszenia.jpa.CarManufacturer;
 import wizut.tpsi.ogloszenia.jpa.CarModel;
 import wizut.tpsi.ogloszenia.jpa.FuelType;
+import wizut.tpsi.ogloszenia.jpa.Offer;
 import wizut.tpsi.ogloszenia.services.OffersService;
 
 @Controller
@@ -34,10 +35,22 @@ public class HomeController {
         model.addAttribute("fuelType", fuelType);
         
         List<CarModel> carModel = os.getCarModels(3);
-        model.addAttribute("carModel", carModel);     
+        model.addAttribute("carModel", carModel);    
+        
+        List<Offer> carOffer = os.getOffersByModel(10);
+        model.addAttribute("carOffer", carOffer);
+        
+//        List<Offer> carOfferMan = os.getOffersByManufacturer(2);
+//        model.addAttribute("carOfferMan", carOfferMan);
+        
+        List<Offer> offerTitle = os.getOffers();
+        model.addAttribute("offerTitle", offerTitle);
+        
         
         model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
         model.addAttribute("getManufacturer2", os.getModel(2).getName());
+        
+        model.addAttribute("carsOffer", os.getOffer(2));
         
         return "offersList";
     }

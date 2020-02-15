@@ -6,6 +6,7 @@
 package wizut.tpsi.ogloszenia.jpa;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -68,6 +69,22 @@ public class Offer {
     @ManyToOne
     private FuelType fuelType;
 
+    public Offer(){
+        this.id = -1;
+        this.title = "None";
+        this.year = 1900;
+        this.mileage = 0;
+        this.engineSize = new BigDecimal(BigInteger.ZERO);
+        this.enginePower = 0;
+        this.doors = 0;
+        this.colour = "Unknown";
+        this.description = "Not specified";
+        this.price = -1;
+        this.model = null;
+        this.bodyStyle = null;
+        this.fuelType = null;
+    }
+    
     public Offer(Integer id, String title, Integer year, Integer mileage, BigDecimal engineSize, Integer enginePower, Integer doors, String colour, String description, Integer price, CarModel model, BodyStyle bodyStyle, FuelType fuelType) {
         this.id = id;
         this.title = title;
