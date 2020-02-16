@@ -17,6 +17,7 @@ import wizut.tpsi.ogloszenia.jpa.CarModel;
 import wizut.tpsi.ogloszenia.jpa.FuelType;
 import wizut.tpsi.ogloszenia.jpa.Offer;
 import wizut.tpsi.ogloszenia.services.OffersService;
+import wizut.tpsi.ogloszenia.web.OfferFilter;
 
 @Controller
 public class HomeController {
@@ -24,7 +25,7 @@ public class HomeController {
     OffersService os;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, OfferFilter offerFilter) {
         
         List<CarManufacturer> carManufacturers = os.getCarManufacturers();
         List<CarModel> carModels = os.getCarModels(3);
@@ -35,7 +36,6 @@ public class HomeController {
         model.addAttribute("carModels", carModels);
         model.addAttribute("offers", offers);
 
-        return "offersList";
     
 //        List<BodyStyle> bodyStyle = os.getBodyStyles();
 //        model.addAttribute("bodyStyle", bodyStyle);
@@ -46,17 +46,21 @@ public class HomeController {
 //        List<Offer> carOffer = os.getOffersByModel(10);
 //        model.addAttribute("carOffer", carOffer);
 //        
-//        List<Offer> carOfferMan = os.getOffersByManufacturer(2);
-//        model.addAttribute("carOfferMan", carOfferMan);           
+        List<Offer> carOfferManuf = os.getOffersByManufacturer(3);
+        model.addAttribute("carOfferManuf", carOfferManuf);           
 //        
 //        model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
 //        model.addAttribute("getManufacturer2", os.getModel(2).getName());
 
+        Offer oneOffer = os.getOffer(1);
+        model.addAttribute("oneOffer", oneOffer);
+        
+    return "offersList";
     }
-    @GetMapping("/offer/{id}")
-        public String offerDetails(Model model, @PathVariable("id") Integer id) {
-            Offer offer = os.getOffer(id);
-            model.addAttribute("offer", offer);
-            return "offerDetails";
-        }
+//    @GetMapping("/offer/{id}")
+//        public String offerDetails(Model model, @PathVariable("id") Integer id) {
+//            Offer offer = os.getOffer(id);
+//            model.addAttribute("offer", offer);
+//            return "offerDetails";
+//        }
 }
