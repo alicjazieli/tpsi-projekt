@@ -5,25 +5,29 @@
  */
 package wizut.tpsi.ogloszenia.web;
 
+/**
+ *
+ * @author ALA
+ */
 public class OfferFilter{
     
-    private Integer OfferFilter;
-    private Integer modelId;
-    
-    public Integer getOfferFilter() {
-        return OfferFilter;
+    private int manufacturerId;
+
+    public void setManufacturerId(int manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
-    public void setOfferFilter(Integer OfferFilter) {
-        this.OfferFilter = OfferFilter;
-    }
-
-    public Integer getModelId() {
-        return modelId;
-    }
-
-    public void setModelId(Integer modelId) {
+    public void setModelId(int modelId) {
         this.modelId = modelId;
+    }
+    private int modelId;
+
+    public int getManufacturerId() {
+        return manufacturerId;
+    }
+
+    public int getModelId() {
+        return modelId;
     }
     
 }

@@ -30,37 +30,55 @@ public class HomeController {
         List<CarManufacturer> carManufacturers = os.getCarManufacturers();
         List<CarModel> carModels = os.getCarModels(3);
 
-        List<Offer> offers = os.getOffers();
+        List<Offer> offers;
+
+        if(offerFilter.getManufacturerId()!=0) {
+            offers = os.getOffersByManufacturer(offerFilter.getManufacturerId());
+        } else {
+            offers = os.getOffers();
+        }
 
         model.addAttribute("carManufacturers", carManufacturers);
         model.addAttribute("carModels", carModels);
         model.addAttribute("offers", offers);
 
     
-//        List<BodyStyle> bodyStyle = os.getBodyStyles();
-//        model.addAttribute("bodyStyle", bodyStyle);
-//        
-//        List<FuelType> fuelType = os.getFuelTypes();
-//        model.addAttribute("fuelType", fuelType);
-//
-//        List<Offer> carOffer = os.getOffersByModel(10);
-//        model.addAttribute("carOffer", carOffer);
-//        
+        List<BodyStyle> bodyStyle = os.getBodyStyles();
+        model.addAttribute("bodyStyle", bodyStyle);
+        
+        List<FuelType> fuelType = os.getFuelTypes();
+        model.addAttribute("fuelType", fuelType);
+
+        List<Offer> carOffer = os.getOffersByModel(10);
+        model.addAttribute("carOffer", carOffer);
+        
         List<Offer> carOfferManuf = os.getOffersByManufacturer(3);
         model.addAttribute("carOfferManuf", carOfferManuf);           
-//        
-//        model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
-//        model.addAttribute("getManufacturer2", os.getModel(2).getName());
+        
+        model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
+        model.addAttribute("getManufacturer2", os.getModel(2).getName());
 
         Offer oneOffer = os.getOffer(1);
         model.addAttribute("oneOffer", oneOffer);
         
     return "offersList";
     }
-//    @GetMapping("/offer/{id}")
-//        public String offerDetails(Model model, @PathVariable("id") Integer id) {
-//            Offer offer = os.getOffer(id);
-//            model.addAttribute("offer", offer);
-//            return "offerDetails";
-//        }
+    @GetMapping("/offer/{id}")
+        public String offerDetails(Model model, @PathVariable("id") Integer id) {
+            Offer offer = os.getOffer(id);
+            model.addAttribute("offer", offer);
+            return "offerDetails";
+        }
+        
+    @GetMapping("/newoffer")
+        public String newOfferForm(Model model, Offer offer) {
+            List<CarModel> carModels = os.getCarModels();
+            List<BodyStyle> bodyStyles = os.getBodyStyles();
+            List<FuelType> fuelTypes = os.getFuelTypes();
+
+            model.addAttribute("carModels", carModels);
+            model.addAttribute("bodyStyles", bodyStyles);
+            model.addAttribute("fuelTypes", fuelTypes);
+            return "offerForm";
+        }
 }

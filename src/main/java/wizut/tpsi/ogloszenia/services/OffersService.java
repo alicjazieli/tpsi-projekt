@@ -57,12 +57,12 @@ public class OffersService {
         return result;
     }
     
-//    public List<CarModel> getCarModels() {
-//        String jpql = "select ca from CarModel ca order by ca.name";
-//        TypedQuery<CarModel> query = em.createQuery(jpql, CarModel.class);
-//        List<CarModel> result = query.getResultList();
-//        return result;
-//    }
+    public List<CarModel> getCarModels() {
+        String jpql = "select ca from CarModel ca order by ca.name";
+        TypedQuery<CarModel> query = em.createQuery(jpql, CarModel.class);
+        List<CarModel> result = query.getResultList();
+        return result;
+    }
     
     public List<CarModel> getCarModels(int manufacturerId) {
         String jpql = "select cm from CarModel cm where cm.manufacturer.id = :id order by cm.name";
@@ -95,9 +95,7 @@ public class OffersService {
         
         return query.getResultList();
     }
-    
-   
-    
+
 }
 
 
