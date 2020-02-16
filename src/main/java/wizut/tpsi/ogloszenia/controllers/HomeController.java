@@ -44,7 +44,6 @@ public class HomeController {
         model.addAttribute("carModels", carModels);
         model.addAttribute("offers", offers);
 
-    
         List<BodyStyle> bodyStyle = os.getBodyStyles();
         model.addAttribute("bodyStyle", bodyStyle);
         
@@ -56,7 +55,6 @@ public class HomeController {
         
         List<Offer> carOfferManuf = os.getOffersByManufacturer(3);
         model.addAttribute("carOfferManuf", carOfferManuf);           
-        
         model.addAttribute("carModel2", os.getModel(2).getManufacturer().getName());
         model.addAttribute("getManufacturer2", os.getModel(2).getName());
 
