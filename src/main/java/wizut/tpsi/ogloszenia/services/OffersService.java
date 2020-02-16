@@ -100,6 +100,7 @@ public class OffersService {
 
     public Offer createOffer(Offer offer) {
         em.persist(offer);
+        
         return offer;
     }
     
@@ -107,7 +108,7 @@ public class OffersService {
         Offer offer = em.find(Offer.class, id);
         em.remove(offer);
     
-    return offer;
+        return offer;
     }
     
     public Offer saveOffer(Offer offer) {

@@ -101,7 +101,7 @@ public class Offer {
         this.doors = 0;
         this.colour = "Unknown";
         this.description = "Not specified";
-        this.price = -1;
+        this.price = 1;
         this.model = null;
         this.bodyStyle = null;
         this.fuelType = null;
