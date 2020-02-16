@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import wizut.tpsi.ogloszenia.jpa.BodyStyle;
 import wizut.tpsi.ogloszenia.jpa.CarManufacturer;
@@ -17,6 +18,7 @@ import wizut.tpsi.ogloszenia.jpa.FuelType;
 import wizut.tpsi.ogloszenia.jpa.Offer;
 
 @Service
+@Transactional
 public class OffersService {
     @PersistenceContext
     private EntityManager em;
@@ -96,6 +98,10 @@ public class OffersService {
         return query.getResultList();
     }
 
+    public Offer createOffer(Offer offer) {
+        em.persist(offer);
+        return offer;
+    }
 }
 
 

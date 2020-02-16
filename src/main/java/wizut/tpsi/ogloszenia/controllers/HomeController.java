@@ -6,9 +6,11 @@
 package wizut.tpsi.ogloszenia.controllers;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import wizut.tpsi.ogloszenia.jpa.BodyStyle;
@@ -71,14 +73,20 @@ public class HomeController {
         }
         
     @GetMapping("/newoffer")
-        public String newOfferForm(Model model, Offer offer) {
-            List<CarModel> carModels = os.getCarModels();
-            List<BodyStyle> bodyStyles = os.getBodyStyles();
-            List<FuelType> fuelTypes = os.getFuelTypes();
+        public String newOfferForm(Model model, @Valid Offer offer, BindingResult binding) {
+            if(binding.hasErrors()) {
+                List<CarModel> carModels = os.getCarModels();
+                List<BodyStyle> bodyStyles = os.getBodyStyles();
+                List<FuelType> fuelTypes = os.getFuelTypes();
 
-            model.addAttribute("carModels", carModels);
-            model.addAttribute("bodyStyles", bodyStyles);
-            model.addAttribute("fuelTypes", fuelTypes);
+                model.addAttribute("carModels", carModels);
+                model.addAttribute("bodyStyles", bodyStyles);
+                model.addAttribute("fuelTypes", fuelTypes);
+                
             return "offerForm";
         }
+        offer = os.createOffer(offer);
+
+    return "redirect:/offer/" + offer.getId();
+}
 }
